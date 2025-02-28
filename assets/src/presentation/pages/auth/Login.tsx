@@ -13,12 +13,15 @@ export default function LoginPage() {
         <Button
           title="Login"
           onPress={() => {
-            Alert.alert("LOGIN");
+            // TH1 = "NAVIGATE" : BACK bị nhảy vào trang LOGIN
+            // navigation.navigate("inApp"); // CYDB = điều hướng ĐẾN CỤM = "inApp"
+            // TH2 = "REPLACE" : BACK sẽ thoát ra khỏi APP
+            navigation.replace("inApp"); // CYDB = điều hướng ĐẾN CỤM = "inApp"
           }}
         />
         <Text
           onPress={() => {
-            navigation.navigate("register"); // điều hướng = navigate("name")
+            navigation.navigate("register"); // điều hướng ĐẾN TRANG = "register"
           }}
         >
           Register

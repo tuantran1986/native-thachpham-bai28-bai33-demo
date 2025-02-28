@@ -14,7 +14,7 @@ export default function RegisterPage() {
         <Button
           title="Submit"
           onPress={() => {
-            navigation.navigate("login"); // điều hướng = navigate("name")
+            navigation.navigate("login"); // điều hướng ĐẾN TRANG = navigate("name")
           }}
         />
       </View>
