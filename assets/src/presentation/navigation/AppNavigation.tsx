@@ -8,6 +8,7 @@ import PostsPage from "../pages/inApp/Posts";
 import ProfilePage from "../pages/inApp/Profile";
 import SettingPage from "../pages/inApp/Setting";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const Stack = createStackNavigator(); // STACK: xếp chồng các màn hình
 const tab = createBottomTabNavigator(); // TAB: dàn hàng - các tab dưới màn hình - song song nhau
@@ -47,9 +48,29 @@ function InAppNavigation() {
   // TAB: dàn hàng - các tab dưới màn hình - song song nhau
   return (
     <tab.Navigator
-      screenOptions={{
-        headerShown: false, // Ẩn header mặc định
-      }}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName = "";
+          switch (route.name) {
+            case "profile":
+              iconName = "user";
+              break;
+            case "posts":
+              iconName = "list";
+              break;
+            case "setting":
+              iconName = "gear";
+              break;
+            default:
+              iconName = "home";
+              break;
+          }
+
+          return <Icon name={iconName} color={color} size={20} />;
+        },
+        tabBarActiveTintColor: "#39B78D", // màu icon ACTIVE
+        tabBarInactiveTintColor: "gray", // màu icon KHÔNG-ACTIVE
+      })}
     >
       <tab.Screen name="home" component={HomePage} />
       <tab.Screen name="posts" component={PostsPage} />
